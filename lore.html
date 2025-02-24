@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum - Cosmos & Sky</title>
+    <title>Lore - Cosmos & Sky</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia|Cinzel|EB+Garamond" rel="stylesheet">
 </head>
@@ -26,25 +26,16 @@
         </nav>
     </header>
 
-    <section id="forum">
-        <div class="blood-drip"></div>
-        <h1>The Choir’s Whisper</h1>
-        <p class="tagline">Echo your insights into the void.</p>
-        
-        <div class="insight-wall">
-            <h2>Insight Wall</h2>
-            <div class="insight-post">
-                <p>"The Moon Presence watches us all..."</p>
-                <span class="hunter">—Anonymous Hunter</span>
-            </div>
-            <div class="insight-post">
-                <p>"Kos cursed the sea, and us with it."</p>
-                <span class="hunter">—Fisher of the Hamlet</span>
-            </div>
-            <div class="insight-post">
-                <p>"Eyes on the inside—madness or truth?"</p>
-                <span class="hunter">—Scholar of Byrgenwerth</span>
-            </div>
+    <section id="lore">
+        <div class="lore-intro">
+            <h1>The Secrets of Yharnam</h1>
+            <p class="tagline">Delve into the abyss of the Great Ones and their cursed legacy.</p>
+        </div>
+        <div class="lore-entry">
+            <h2>The Moon Presence</h2>
+            <p>A nameless Great One, the Moon Presence weaves the Hunter’s Dream, a realm of eternal night where hunters are bound to its will. Beckoned by Laurence and his associates under the paleblood sky, it descends with the Blood Moon, its tentacles a crown of chaos. Neither flesh nor spirit, it is the puppetmaster of Gehrman, the First Hunter, guiding blades to slay its kin.</p>
+            <img src="images/moon precense.webp" alt="Moon Presence in the Dream" width="600">
+            <p>Every Great One yearns for a child lost—its umbilical cords whisper of surrogates sought through blood and dream. Some call it Flora, demon of the moon, a shadow craving dominion over Yharnam’s fate. Defy it with insight, and ascend—or fall to its embrace.</p>
         </div>
     </section>
 
@@ -55,13 +46,4 @@
     <script>
         function toggleMenu() {
             const nav = document.querySelector('.nav-links');
-            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
-        }
-
-        function searchLore() {
-            const query = document.getElementById('search').value.toLowerCase();
-            console.log('Searching for:', query);
-        }
-    </script>
-</body>
-</html>
+            nav.style.display = nav.style.display === 'block' ? 'none' : '

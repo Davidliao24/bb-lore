@@ -5,18 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosmos & Sky - Bloodborne Lore</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Crimson+Text|Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia|Cinzel|EB+Garamond" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="images/hunters-mark-logo.png" alt="Cosmos & Sky Logo" width="100">
+            <img src="images/hunters-mark-logo.png" alt="Cosmos & Sky Logo" width="80">
             <span class="logo-text">Cosmos & Sky</span>
         </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Seek the Great Ones..." onkeyup="searchLore()">
+        </div>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="lore.html">Lore</a>
-            <a href="forum.html">Forum</a>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="lore.html">Lore</a>
+                <a href="about.html">About</a>
+            </div>
         </nav>
     </header>
 
@@ -26,12 +32,78 @@
             <p class="tagline">To Cosmos & Sky—unveil the secrets of Yharnam’s Great Ones.</p>
         </div>
         <div class="anchor-image">
-            <img src="images/moon presence gif.webp" alt="Moon Presence descending over Yharnam" width="800">
+            <img src="images/moon presence gif.webp" alt="Moon Presence descending" width="800">
+        </div>
+        <div class="article-week">
+            <h2>Article of the Week</h2>
+            <h3>The Moon’s Pale Embrace</h3>
+            <p>Delving into the Moon Presence’s role in the Hunter’s Dream—a puppetmaster or a savior?</p>
+            <a href="#" class="read-more">Read More</a>
+        </div>
+        <div class="insight-counter">
+            <h2>Your Insight</h2>
+            <p id="insight-count">0</p>
+            <button onclick="gainInsight()">Gain Insight</button>
+        </div>
+        <div class="quote-generator">
+            <h2>Eldritch Whispers</h2>
+            <p id="random-quote">"Click to hear the cosmos speak..."</p>
+            <button onclick="getRandomQuote()">New Quote</button>
+        </div>
+        <div class="lore-teaser">
+            <h2>Lore Teaser</h2>
+            <p id="lore-snippet">What secrets lie beneath?</p>
+            <button onclick="getLoreTeaser()">Unveil More</button>
         </div>
     </section>
 
     <footer>
         <p>Built by a Hunter, for Hunters | 2025</p>
     </footer>
+
+    <script>
+        const quotes = [
+            "The sky and the cosmos are one. - Choir Intelligencer Edgar",
+            "Fear the old blood. - Master Willem",
+            "Grant us eyes, grant us eyes! - Micolash",
+            "Seek paleblood to transcend the hunt. - Note",
+            "The night, and the dream, were long... - Gehrman"
+        ];
+
+        const loreTeasers = [
+            "The Moon Presence binds hunters to an endless dream...",
+            "Kos, or some say Kosm, lies dead on the shore, her child wailing...",
+            "Ebrietas weeps beneath the city, her blood a gift and curse...",
+            "Mergo’s cries echo through the nightmare, unseen yet ever-present...",
+            "Amygdala watches from above, its many eyes unblinking..."
+        ];
+
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function searchLore() {
+            const query = document.getElementById('search').value.toLowerCase();
+            console.log('Searching for:', query);
+        }
+
+        let insight = 0;
+        function gainInsight() {
+            insight += 1;
+            document.getElementById('insight-count').textContent = insight;
+            if (insight >= 40) alert('Beware the frenzy...');
+        }
+
+        function getRandomQuote() {
+            const quote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('random-quote').textContent = quote;
+        }
+
+        function getLoreTeaser() {
+            const teaser = loreTeasers[Math.floor(Math.random() * loreTeasers.length)];
+            document.getElementById('lore-snippet').textContent = teaser;
+        }
+    </script>
 </body>
 </html>

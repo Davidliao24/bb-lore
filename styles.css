@@ -3,16 +3,18 @@ body {
     color: #d9d9d9;
     margin: 0;
     padding: 0;
-    font-family: 'Crimson Text', serif; /* Small font */
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
 }
 
 header {
     background-color: #8b0000;
-    padding: 20px;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 4px solid #d9d9d9;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 .logo {
@@ -21,21 +23,59 @@ header {
 }
 
 .logo img {
-    margin-right: 10px;
+    margin-right: 0.5rem;
     border: 2px solid #d9d9d9;
+    width: 80px;
+    height: auto;
 }
 
 .logo-text {
-    font-family: 'Great Vibes', cursive; /* Decorative, logo only */
-    font-size: 2.5em;
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 2rem;
     color: #d9d9d9;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin: 0 1rem;
+}
+
+#search {
+    width: 100%;
+    max-width: 300px;
+    padding: 0.5rem;
+    background-color: #2b2b2b;
+    color: #d9d9d9;
+    border: 2px solid #d9d9d9;
+    font-family: 'EB Garamond', serif;
+}
+
+#search:focus {
+    outline: none;
+    border-color: #8b0000;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.hamburger {
+    font-size: 2rem;
+    color: #d9d9d9;
+    cursor: pointer;
+    display: none;
+}
+
+.nav-links {
+    display: flex;
 }
 
 nav a {
     color: #d9d9d9;
-    font-family: 'Oswald', sans-serif; /* Medium font */
-    font-size: 1.5em;
-    margin: 0 20px;
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.2rem;
+    margin: 0 1rem;
     text-decoration: none;
 }
 
@@ -44,40 +84,356 @@ nav a:hover {
     text-shadow: 0 0 5px #d9d9d9;
 }
 
-#home {
+#home, #lore, #forum {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 2rem;
     text-align: center;
 }
 
 .welcome h1 {
-    font-family: 'Oswald', sans-serif; /* Medium font */
-    font-size: 3em;
+    font-family: 'Cinzel', sans-serif;
+    font-size: 2.5rem;
     color: #8b0000;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
 .tagline {
-    font-family: 'Great Vibes', cursive; /* Decorative */
-    font-size: 1.8em;
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1.5rem;
     color: #d9d9d9;
-    font-style: italic;
 }
 
 .anchor-image img {
-    margin-top: 20px;
+    margin-top: 1rem;
     border: 4px solid #8b0000;
     max-width: 100%;
+    height: auto;
+}
+
+.article-week {
+    margin-top: 2rem;
+    background-color: #2b2b2b;
+    padding: 1rem;
+    border-left: 4px solid #8b0000;
+}
+
+.article-week h2 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.8rem;
+    color: #d9d9d9;
+}
+
+.article-week h3 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.5rem;
+    color: #8b0000;
+    margin: 0.5rem 0;
+}
+
+.article-week p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.read-more {
+    color: #8b0000;
+    font-family: 'Cinzel', sans-serif;
+    text-decoration: none;
+}
+
+.read-more:hover {
+    color: #d9d9d9;
+}
+
+.insight-counter {
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.insight-counter h2 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.8rem;
+    color: #d9d9d9;
+}
+
+#insight-count {
+    font-size: 2rem;
+    color: #8b0000;
+}
+
+button {
+    background-color: #8b0000;
+    color: #d9d9d9;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d9d9d9;
+    color: #8b0000;
 }
 
 footer {
     background-color: #8b0000;
     color: #d9d9d9;
     text-align: center;
-    padding: 10px;
+    padding: 0.5rem;
     position: fixed;
     bottom: 0;
     width: 100%;
-    font-size: 0.9em;
+    font-size: 0.9rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 1.8rem;
+    }
+    .hamburger {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #8b0000;
+        padding: 1rem 0;
+    }
+    nav a {
+        margin: 0.5rem 0;
+    }
+    .search-bar {
+        order: 3;
+        width: 100%;
+        margin: 1rem 0 0;
+    }
+}
+
+@media (max-width: 375px) {
+    header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    .logo img {
+        width: 60px;
+    }
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    .hamburger {
+        margin-top: 0.5rem;
+    }
+    #home, #lore, #forum {
+        padding: 1rem;
+    }
+    .welcome h1 {
+        font-size: 1.5rem;
+    }
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .quote-generator, .lore-teaser {
+        margin-top: 2rem;
+        background-color: #2b2b2b;
+        padding: 1rem;
+        border-left: 4px solid #8b0000;
+    }
+    
+    .quote-generator h2, .lore-teaser h2 {
+        font-family: 'Cinzel', sans-serif;
+        font-size: 1.8rem;
+        color: #d9d9d9;
+        margin-bottom: 0.5rem;
+    }
+    
+    #random-quote, #lore-snippet {
+        font-size: 1rem;
+        font-style: italic;
+        color: #d9d9d9;
+        margin-bottom: 1rem;
+    }
+    
+    /* Adjust for smaller screens */
+    @media (max-width: 768px) {
+        .quote-generator h2, .lore-teaser h2 {
+            font-size: 1.5rem;
+        }
+    }
+    
+    @media (max-width: 375px) {
+        .quote-generator h2, .lore-teaser h2 {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Blood Drip Animation */
+.blood-drip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blood-drip::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 80px;
+    background: #8b0000;
+    border-radius: 0 0 8px 8px;
+    animation: drip 3s infinite ease-in-out;
+    left: 40%;
+}
+
+.blood-drip::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 60px;
+    background: #d9d9d9;
+    border-radius: 0 0 6px 6px;
+    animation: drip 4s infinite ease-in-out 1s;
+    left: 60%;
+}
+
+@keyframes drip {
+    0% { transform: translateY(-100%); opacity: 1; }
+    50% { transform: translateY(40px); opacity: 0.8; }
+    100% { transform: translateY(80px); opacity: 0; }
+}
+
+/* Forum Adjustments */
+#forum {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+}
+
+#forum h1 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 2rem;
+    color: #8b0000;
+    margin-top: 2rem;
+}
+
+.contact-info h2 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.5rem;
+    color: #d9d9d9;
+}
+
+.blood-echo {
+    margin-top: 1rem;
+}
+
+.blood-echo textarea {
+    width: 100%;
+    background-color: #2b2b2b;
+    color: #d9d9d9;
+    border: 2px solid #8b0000;
+    padding: 0.5rem;
+    font-family: 'EB Garamond', serif;
+    resize: none;
+}
+
+.blood-echo button {
+    margin-top: 0.5rem;
+}
+
+.insight-wall {
+    margin-top: 2rem;
+}
+
+.insight-wall h2 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.5rem;
+    color: #d9d9d9;
+}
+
+.insight-post {
+    background-color: #2b2b2b;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 4px solid #8b0000;
+}
+
+.insight-post p {
+    font-size: 1rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.insight-post .hunter {
+    font-size: 0.9rem;
+    color: #8b0000;
+    display: block;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Tweaks */
+@media (min-width: 768px) {
+    #forum {
+        max-width: 768px;
+        padding: 2rem;
+    }
+    #forum h1 {
+        font-size: 2.5rem;
+    }
+    .contact-info h2, .insight-wall h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 375px) {
+    #forum h1 {
+        font-size: 1.5rem;
+    }
+    .contact-info h2, .insight-wall h2 {
+        font-size: 1.2rem;
+    }
+}
+/* About Section */
+#about {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+#about h1 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 2rem;
+    color: #8b0000;
+    margin-bottom: 0.5rem;
+}
+
+/* Forum Tweaks */
+#forum {
+    padding-top: 4rem; /* Space for blood drip */
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    #about {
+        max-width: 768px;
+        padding: 2rem;
+    }
+    #about h1 {
+        font-size: 2.5rem;
+    }
+}
+
 }
