@@ -31,29 +31,50 @@
         <div class="hunter-silhouette">
             <img src="images/hunter-silhouette.png" alt="Hunter in shadow">
         </div>
-        <h1><img src="images/hunters-mark-logo.png" alt="Mark" class="icon"> Echoes of the Old Blood</h1>
-        <p class="tagline">Born in Yharnam’s shadows, Cosmos & Sky is a beacon for hunters lost to the dream.</p>
+        <div class="intro">
+            <h1><img src="" alt="Eye Rune" class="icon"> Echoes of the Old Blood</h1>
+            <p>In the fog of Yharnam’s endless night, Cosmos & Sky arose—forged by hunters who glimpsed the Moon Presence’s pale embrace. We chronicle the scourge, defy the dream, and seek the truth beneath the stars.</p>
+        </div>
         
         <div class="creed">
-            <h2><img src="images/blood-vial.png" alt="Vial" class="icon"> The Hunter’s Creed</h2>
+            <h2><img src="" alt="Eye Rune" class="icon"> The Hunter’s Creed</h2>
             <p>"We tread the night, blades in hand, seeking paleblood beneath the moon. Fear the old blood, yet embrace the hunt—for the cosmos calls."</p>
         </div>
 
-        <div class="contact-info">
-            <h2><img src="images/hunters-mark-logo.png" alt="Mark" class="icon"> Contact the Hunters</h2>
-            <p>13 Paleblood Way, Yharnam</p>
-            <p>(666) 555-0131</p>
-            <img src="images/yharnam-map.jpg" alt="Map of Yharnam" width="300">
-            <div class="blood-echo">
-                <textarea placeholder="Send a Blood Echo..." rows="3"></textarea>
-                <button>Submit</button>
-            </div>
+        <div class="pledge">
+            <h2><img src="" alt="Eye Rune" class="icon"> Join the Hunt</h2>
+            <p>Hunters Pledged: <span id="pledge-count">0</span></p>
+            <button onclick="pledgeHunter()">Pledge Your Mark</button>
         </div>
     </section>
 
     <footer>
-        <p>Built by a Hunter, for Hunters | 2025</p>
+        <div class="contact-info">
+            <h2><img src="images/eye-rune.png" alt="Eye Rune" class="icon"> Contact the Hunters</h2>
+            <p>13 Paleblood Way, Yharnam</p>
+            <p>(666) 555-0131</p>
+            <img src="" alt="Map of Yharnam" width="300">
+        </div>
     </footer>
 
     <script>
-        function toggle
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function searchLore() {
+            const query = document.getElementById('search').value.toLowerCase();
+            console.log('Searching for:', query);
+        }
+
+        let pledgeCount = localStorage.getItem('pledgeCount') || 0;
+        document.getElementById('pledge-count').textContent = pledgeCount;
+        function pledgeHunter() {
+            pledgeCount++;
+            localStorage.setItem('pledgeCount', pledgeCount);
+            document.getElementById('pledge-count').textContent = pledgeCount;
+        }
+    </script>
+</body>
+</html>
