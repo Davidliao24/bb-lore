@@ -436,4 +436,135 @@ footer {
     }
 }
 
+/* About Adjustments */
+#about {
+    padding-top: 4rem; /* Space for blood drip */
+}
+
+#about h1 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 2rem;
+    color: #8b0000;
+    margin-top: 2rem;
+}
+
+.creed {
+    margin: 1.5rem 0;
+    background-color: #2b2b2b;
+    padding: 1rem;
+    border-left: 4px solid #8b0000;
+}
+
+.creed h2 {
+    font-family: 'Cinzel', sans-serif;
+    font-size: 1.5rem;
+    color: #d9d9d9;
+    margin-bottom: 0.5rem;
+}
+
+.creed p {
+    font-size: 1rem;
+    font-style: italic;
+    color: #d9d9d9;
+    line-height: 1.6;
+}
+
+/* Blood Drip (Reused) */
+.blood-drip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blood-drip::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 80px;
+    background: #8b0000;
+    border-radius: 0 0 8px 8px;
+    animation: drip 3s infinite ease-in-out;
+    left: 40%;
+}
+
+.blood-drip::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 60px;
+    background: #d9d9d9;
+    border-radius: 0 0 6px 6px;
+    animation: drip 4s infinite ease-in-out 1s;
+    left: 60%;
+}
+
+@keyframes drip {
+    0% { transform: translateY(-100%); opacity: 1; }
+    50% { transform: translateY(40px); opacity: 0.8; }
+    100% { transform: translateY(80px); opacity: 0; }
+}
+
+/* Background */
+body {
+    background: #1a1a1a url('images/parchment-bg.jpg') repeat;
+    background-size: cover;
+}
+
+/* Silhouette */
+.hunter-silhouette {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.hunter-silhouette img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Icon Accents */
+.icon {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/* About Tweaks */
+#about {
+    background: rgba(26, 26, 26, 0.8); /* Slight overlay for readability */
+    padding: 4rem 1rem 2rem;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .icon {
+        width: 25px;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}
+
+#search-results {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #d9d9d9;
+}
+
 }

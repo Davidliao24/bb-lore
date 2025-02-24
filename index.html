@@ -27,34 +27,30 @@
     </header>
 
     <section id="home">
-        <div class="welcome">
+        <div class="welcome fade-in">
             <h1>Welcome, Hunters</h1>
             <p class="tagline">To Cosmos & Sky—unveil the secrets of Yharnam’s Great Ones.</p>
         </div>
         <div class="anchor-image">
-            <img src="images/moon presence gif.webp" alt="Moon Presence descending" width="800">
+            <img src="images/moon-presence.jpg" alt="Moon Presence descending" width="800">
         </div>
-        <div class="article-week">
+        <div class="article-week fade-in">
             <h2>Article of the Week</h2>
             <h3>The Moon’s Pale Embrace</h3>
-            <p>Delving into the Moon Presence’s role in the Hunter’s Dream—a puppetmaster or a savior?</p>
+            <p>Delving into the Moon Presence’s role...</p>
             <a href="#" class="read-more">Read More</a>
         </div>
-        <div class="insight-counter">
+        <div class="insight-counter fade-in">
             <h2>Your Insight</h2>
             <p id="insight-count">0</p>
             <button onclick="gainInsight()">Gain Insight</button>
         </div>
-        <div class="quote-generator">
+        <div class="quote-generator fade-in">
             <h2>Eldritch Whispers</h2>
             <p id="random-quote">"Click to hear the cosmos speak..."</p>
             <button onclick="getRandomQuote()">New Quote</button>
         </div>
-        <div class="lore-teaser">
-            <h2>Lore Teaser</h2>
-            <p id="lore-snippet">What secrets lie beneath?</p>
-            <button onclick="getLoreTeaser()">Unveil More</button>
-        </div>
+        <div id="search-results"></div>
     </section>
 
     <footer>
@@ -63,34 +59,25 @@
 
     <script>
         const quotes = [
-            "The sky and the cosmos are one. - Choir Intelligencer Edgar",
-            "Fear the old blood. - Master Willem",
-            "Grant us eyes, grant us eyes! - Micolash",
-            "Seek paleblood to transcend the hunt. - Note",
-            "The night, and the dream, were long... - Gehrman"
+            "The sky and the cosmos are one.",
+            "Fear the old blood.",
+            "Grant us eyes, grant us eyes!"
         ];
-
-        const loreTeasers = [
-            "The Moon Presence binds hunters to an endless dream...",
-            "Kos, or some say Kosm, lies dead on the shore, her child wailing...",
-            "Ebrietas weeps beneath the city, her blood a gift and curse...",
-            "Mergo’s cries echo through the nightmare, unseen yet ever-present...",
-            "Amygdala watches from above, its many eyes unblinking..."
-        ];
+        const content = quotes.concat([
+            "Moon Presence: Master of the Dream.",
+            "Kos: Mother of the Orphan."
+        ]);
 
         function toggleMenu() {
             const nav = document.querySelector('.nav-links');
             nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         }
 
-        function searchLore() {
-            const query = document.getElementById('search').value.toLowerCase();
-            console.log('Searching for:', query);
-        }
-
-        let insight = 0;
+        let insight = localStorage.getItem('insight') || 0;
+        document.getElementById('insight-count').textContent = insight;
         function gainInsight() {
-            insight += 1;
+            insight++;
+            localStorage.setItem('insight', insight);
             document.getElementById('insight-count').textContent = insight;
             if (insight >= 40) alert('Beware the frenzy...');
         }
@@ -100,10 +87,24 @@
             document.getElementById('random-quote').textContent = quote;
         }
 
-        function getLoreTeaser() {
-            const teaser = loreTeasers[Math.floor(Math.random() * loreTeasers.length)];
-            document.getElementById('lore-snippet').textContent = teaser;
+        function searchLore() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const results = content.filter(item => item.toLowerCase().includes(query));
+            document.getElementById('search-results').innerHTML = results.join('<br>');
         }
+
+        let quoteIndex = 0;
+        setInterval(() => {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            document.getElementById('random-quote').textContent = quotes[quoteIndex];
+        }, 5000);
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
